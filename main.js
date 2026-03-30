@@ -8,8 +8,16 @@ const ctx    = canvas.getContext('2d');
 const STAR_COUNT  = 140;
 const MAX_DIST    = 160;   // px — max distance to draw a line
 const LAYERS      = 3;     // parallax depth layers
+const HOVER_RADIUS = 180;  // px — mouse influence radius
 
 let W, H, stars = [];
+let mouse = { x: -9999, y: -9999 };
+
+window.addEventListener('mousemove', e => {
+  const overContent = e.target !== document.body && e.target !== document.documentElement;
+  mouse.x = overContent ? -9999 : e.clientX;
+  mouse.y = overContent ? -9999 : e.clientY;
+});
 
 function resize() {
   W = canvas.width  = window.innerWidth;
@@ -29,6 +37,9 @@ function randomStar() {
     // subtle per-star drift over time
     drift:   (Math.random() - 0.5) * 0.012,
     phase:   Math.random() * Math.PI * 2,
+    targetBaseX: 0,
+    targetBaseY: 0,
+    _hov:    0,
   };
 }
 
@@ -37,6 +48,8 @@ function initStars() {
     const s = randomStar();
     s.baseX = s.x;
     s.baseY = s.y;
+    s.targetBaseX = s.x;
+    s.targetBaseY = s.y;
     return s;
   });
 }
@@ -56,8 +69,16 @@ function draw() {
 
   // Update star positions
   stars.forEach(s => {
+    // smooth lerp toward reshuffle target
+    s.baseX += (s.targetBaseX - s.baseX) * 0.04;
+    s.baseY += (s.targetBaseY - s.baseY) * 0.04;
+
     s.x = s.baseX + Math.sin(time * s.drift + s.phase) * 18;
     s.y = s.baseY - offsets[s.layer];
+
+    // hover proximity factor [0..1]
+    const mdx = s.x - mouse.x, mdy = s.y - mouse.y;
+    s._hov = Math.max(0, 1 - Math.sqrt(mdx * mdx + mdy * mdy) / HOVER_RADIUS);
 
     // wrap vertically so stars re-enter from top when scrolling
     if (s.y < -20)  s.y = H + 10;
@@ -71,12 +92,13 @@ function draw() {
       const dx = a.x - b.x, dy = a.y - b.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < MAX_DIST) {
-        const alpha = (1 - dist / MAX_DIST) * 0.18;
+        const hov   = Math.max(a._hov, b._hov);
+        const alpha = (1 - dist / MAX_DIST) * (0.18 + hov * 0.4);
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
         ctx.strokeStyle = `rgba(45, 230, 184, ${alpha})`;
-        ctx.lineWidth   = 0.6;
+        ctx.lineWidth   = 0.6 + hov * 1.0;
         ctx.stroke();
       }
     }
@@ -86,16 +108,17 @@ function draw() {
   stars.forEach(s => {
     // subtle twinkle
     const twinkle = 0.75 + 0.25 * Math.sin(time * 0.8 + s.phase);
+    const hov = s._hov;
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(200, 240, 235, ${s.opacity * twinkle})`;
+    ctx.arc(s.x, s.y, s.r * (1 + hov * 0.6), 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200, 240, 235, ${Math.min(1, s.opacity * twinkle + hov * 0.6)})`;
     ctx.fill();
 
-    // glow halo on larger stars
-    if (s.r > 1.0) {
+    // glow halo — always shown near cursor, only on large stars otherwise
+    if (s.r > 1.0 || hov > 0.05) {
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(45, 230, 184, ${0.06 * twinkle})`;
+      ctx.arc(s.x, s.y, s.r * (3 + hov * 5), 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(45, 230, 184, ${(0.06 + hov * 0.18) * twinkle})`;
       ctx.fill();
     }
   });
@@ -105,6 +128,15 @@ function draw() {
 }
 
 window.addEventListener('resize', () => { resize(); initStars(); });
+
+window.addEventListener('click', () => {
+  stars.forEach(s => {
+    const angle = Math.random() * Math.PI * 2;
+    const dist  = 25 + Math.random() * 55;
+    s.targetBaseX = Math.max(0, Math.min(W, s.baseX + Math.cos(angle) * dist));
+    s.targetBaseY = Math.max(0, Math.min(H, s.baseY + Math.sin(angle) * dist));
+  });
+});
 resize();
 initStars();
 draw();
