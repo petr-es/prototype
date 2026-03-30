@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petr Slavik — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BACKGROUND CANVAS -->
+  <div class="bg-canvas" aria-hidden="true">
+    <canvas id="constellation"></canvas>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-bar" id="nav-bar">
+    <nav id="nav">
+      <div class="nav-identity">
+        <span class="nav-name">Petr Slavik</span>
+        <span class="nav-roles">Product Designer &amp; Mentor</span>
+      </div>
+      <ul>
+        <li><a href="#bio">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#quotes">Quotes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- HERO / BIO -->
+    <section id="bio">
+      <div class="hero-inner">
+        <div class="bio-text reveal">
+          <div class="bio-eyebrow">Product Designer &amp; Mentor</div>
+          <h1>Turning complexity<br>into clarity.</h1>
+          <p class="lead">
+            I design for data-heavy enterprise systems — at the intersection of
+            interaction design, information architecture, and design systems.
+          </p>
+          <p class="body-copy">
+            Currently at <strong>SentinelOne</strong>, leading next-generation
+            data visualization and analytics within the SOC platform. Previously
+            Wrike, Phrase, and 2FRESH Prague. Based in Prague, Czechia.
+          </p>
+          <div class="bio-actions">
+            <a href="#contact" class="btn-primary">Work with me</a>
+            <a href="#work" class="btn-ghost">See my work</a>
+          </div>
+        </div>
+        <div class="bio-photo reveal reveal-delay">
+          <div class="photo-frame">
+            <img src="photo.jpg" alt="Petr Slavik" />
+            <div class="photo-glow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="work">
+      <div class="section-header reveal">
+        <div class="section-label">Selected Work</div>
+        <h2>Case Studies</h2>
+      </div>
+      <div class="case-grid">
+
+        <article class="case-card reveal">
+          <div class="case-number">01</div>
+          <div class="case-body">
+            <div class="case-label">SentinelOne · 2023–present</div>
+            <h3>SOC Analytics &amp; Data Visualization</h3>
+            <p>
+              Designed the next-generation data visualization and analytics framework
+              for security operations teams. Defined interaction patterns for high-density
+              data tables, real-time dashboards, and reporting workflows. Led design of
+              new Reporting and Notifications services end-to-end.
+            </p>
+            <ul class="case-tags">
+              <li>Interaction Design</li>
+              <li>Information Architecture</li>
+              <li>Design Systems</li>
+              <li>Enterprise UX</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-number">02</div>
+          <div class="case-body">
+            <div class="case-label">Phrase · Localization Platform</div>
+            <h3>Project Management Area Redesign</h3>
+            <p>
+              Owned the end-to-end redesign of the Project Management area, resulting
+              in measurable customer retention improvements. Balanced scope, speed, and
+              quality across iterative releases in close collaboration with PMs and engineers.
+            </p>
+            <ul class="case-tags">
+              <li>Product Strategy</li>
+              <li>User Research</li>
+              <li>Retention</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-number">03</div>
+          <div class="case-body">
+            <div class="case-label">Wrike · Work Management</div>
+            <h3>Sharing &amp; Invitation Flows</h3>
+            <p>
+              Expanded user acquisition by redesigning sharing and invitation features.
+              Mapped friction points in the onboarding funnel and shipped incremental
+              improvements that reduced drop-off across the new-user journey.
+            </p>
+            <ul class="case-tags">
+              <li>Growth Design</li>
+              <li>Onboarding</li>
+              <li>Funnel Optimization</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-number">04</div>
+          <div class="case-body">
+            <div class="case-label">2FRESH Prague · Insurance</div>
+            <h3>Online Sales via Human-Centered Design</h3>
+            <p>
+              Applied HCD methodology to help a major insurance company boost online
+              sales. Conducted discovery research, ran co-creation workshops, and
+              delivered end-to-end service design across all digital touchpoints.
+            </p>
+            <ul class="case-tags">
+              <li>Service Design</li>
+              <li>HCD</li>
+              <li>Workshop Facilitation</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-number">05</div>
+          <div class="case-body">
+            <div class="case-label">BRAINZ IMMERSIVE · XR</div>
+            <h3>UX for AR/VR Experiences</h3>
+            <p>
+              Pioneered UX design for augmented and virtual reality experiences, games,
+              and educational simulations — a domain with no established playbook at the
+              time. Developed spatial interaction patterns from first principles.
+            </p>
+            <ul class="case-tags">
+              <li>Spatial UX</li>
+              <li>AR / VR</li>
+              <li>Edtech</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- QUOTES / REFERENCES -->
+    <section id="quotes">
+      <div class="section-header reveal">
+        <div class="section-label">References</div>
+        <h2>What People Say</h2>
+      </div>
+      <div class="quotes-grid">
+
+        <blockquote class="reveal">
+          <div class="quote-mark">"</div>
+          <p>Petr has a rare ability to hold the big picture while staying sharp on
+          interaction-level details. He makes complex problems look approachable.</p>
+          <footer>Colleague · SentinelOne</footer>
+        </blockquote>
+
+        <blockquote class="reveal">
+          <div class="quote-mark">"</div>
+          <p>One of the most collaborative designers I've worked with. He actively
+          brings engineers and PMs into the design process rather than handing off
+          finished specs.</p>
+          <footer>Engineering Lead</footer>
+        </blockquote>
+
+        <blockquote class="reveal">
+          <div class="quote-mark">"</div>
+          <p>His mentorship was invaluable. Petr gives direct, actionable feedback
+          and genuinely invests in the people he works with.</p>
+          <footer>Mentee · Femme Palette</footer>
+        </blockquote>
+
+      </div>
+      <p class="quotes-note reveal">
+        Full references on
+        <a href="https://www.linkedin.com/in/slavikpetr/" target="_blank" rel="noopener">LinkedIn →</a>
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact-inner reveal">
+        <div class="section-label">Get in Touch</div>
+        <h2>Let's make<br>something great.</h2>
+        <p class="contact-lead">
+          Open to freelance collaborations, product design roles, and mentoring opportunities.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:hello@petrslavik.design" class="contact-link">
+            <span class="contact-link-label">Email</span>
+            hello@petrslavik.design
+          </a>
+          <a href="https://www.linkedin.com/in/slavikpetr/" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-label">LinkedIn</span>
+            /in/slavikpetr
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>© 2026 Petr Slavik</span>
+    <span>Prague, Czechia</span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
