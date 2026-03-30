@@ -162,7 +162,6 @@ nav {
   margin-inline: auto;
 }
 
-/* push main content below fixed nav */
 main { padding-top: 4rem; }
 
 .nav-identity {
@@ -203,6 +202,7 @@ main { padding-top: 4rem; }
 nav ul {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 nav a {
@@ -217,6 +217,41 @@ nav a {
 nav a:hover {
   color: var(--accent-2);
   text-shadow: 0 0 10px rgba(0, 212, 192, 0.65);
+}
+
+/* THEME SWITCHER */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(120, 87, 255, 0.4);
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.theme-btn:hover { color: var(--fg); }
+
+.theme-btn.active {
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(120, 87, 255, 0.5);
+}
+
+.theme-sep {
+  font-size: 0.75rem;
+  color: rgba(120, 87, 255, 0.35);
+  user-select: none;
 }
 
 /* ============================================================
@@ -308,7 +343,6 @@ nav a:hover {
   background: var(--accent);
   color: var(--bg);
   box-shadow: 0 0 24px rgba(120, 87, 255, 0.55), 0 0 50px rgba(120, 87, 255, 0.25);
-  transform: none;
 }
 
 .btn-ghost {
@@ -525,7 +559,7 @@ blockquote {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  transition: border-color 0.25s, box-shadow 0.25s;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
 }
 
 blockquote:hover {
@@ -679,14 +713,12 @@ footer {
 
 .reveal-delay { transition-delay: 0.15s; }
 
-/* stagger case cards */
 .case-card:nth-child(1) { transition-delay: 0s; }
 .case-card:nth-child(2) { transition-delay: 0.07s; }
 .case-card:nth-child(3) { transition-delay: 0.14s; }
 .case-card:nth-child(4) { transition-delay: 0.21s; }
 .case-card:nth-child(5) { transition-delay: 0.28s; }
 
-/* stagger quotes */
 blockquote:nth-child(1) { transition-delay: 0s; }
 blockquote:nth-child(2) { transition-delay: 0.09s; }
 blockquote:nth-child(3) { transition-delay: 0.18s; }

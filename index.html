@@ -6,8 +6,14 @@
   <title>Petr Slavik — Product Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link id="theme-css" rel="stylesheet" href="style-original.css">
+  <script>
+    (function () {
+      var t = localStorage.getItem('ps-theme') || 'original';
+      document.getElementById('theme-css').href = 'style-' + t + '.css';
+    })();
+  </script>
 </head>
 <body>
 
@@ -32,6 +38,11 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#quotes">Quotes</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-btn" data-theme="original">Original</button>
+          <span class="theme-sep">/</span>
+          <button class="theme-btn" data-theme="80s">80s</button>
+        </li>
       </ul>
     </nav>
   </div>
@@ -222,7 +233,7 @@
           </a>
           <a href="https://www.linkedin.com/in/slavikpetr/" target="_blank" rel="noopener" class="contact-link">
             <span class="contact-link-label">LinkedIn</span>
-            /in/slavikpetr
+            linkedin.com/in/slavikpetr
           </a>
         </div>
       </div>
